@@ -30,7 +30,7 @@
 
 // Qt
 #include <QtCore/QVariantList>
-#include <QtGui/QAction>
+#include <QAction>
 
 
 namespace KWallet {

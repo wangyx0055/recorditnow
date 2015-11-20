@@ -24,6 +24,7 @@
 
 // KDE
 #include <kdebug.h>
+#include <KLocale>
 
 // Qt
 #include <QtCore/QDir>

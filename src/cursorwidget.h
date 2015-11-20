@@ -24,13 +24,14 @@
 // own
 #include "keymon/event.h"
 
+
 // Qt
-#include <QtGui/QWidget>
+#include <QWidget>
 #include <QtCore/QThread>
 #include <QtGui/QColor>
 #include <QtCore/QHash>
 #include <QtCore/QVariantMap>
-
+#include <QtX11Extras/QX11Info>
 
 namespace KeyMon {
     class Device;

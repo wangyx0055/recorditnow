@@ -6,8 +6,19 @@ if (BUILD_WITH_JOSCHY)
     add_subdirectory(joschy-snapshot-23-02-10)
 endif (BUILD_WITH_JOSCHY)
 
-find_package(KDE4 REQUIRED)
-include (KDE4Defaults)
+find_package(ECM 0.0.11 REQUIRED NO_MODULE)
+set(CMAKE_MODULE_PATH ${ECM_MODULE_PATH} ${ECM_KDE_MODULE_DIR})
+ 
+include(KDEInstallDirs)
+include(KDECMakeSettings)
+include(KDECompilerSettings)
+include(FeatureSummary)
+
+find_package(Qt5 REQUIRED COMPONENTS Widgets)
+find_package(KF5 REQUIRED COMPONENTS KDELibs4Support GlobalAccel I18n)
+include_directories("/usr/include/KF5/KGlobalAccel/")
+
+#add_definitions(-DQT_DISABLE_DEPRECATED_BEFORE=0x040900)
 
 add_definitions(${QT_DEFINITIONS} ${KDE4_DEFINITIONS})
 include_directories(${CMAKE_SOURCE_DIR} ${CMAKE_CURRENT_BINARY_DIR} ${CMAKE_BINARY_DIR} ${KDE4_INCLUDES})

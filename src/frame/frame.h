@@ -22,7 +22,7 @@
 
 
 // Qt
-#include <QtGui/QWidget>
+#include <QWidget>
 #include <QtCore/QHash>
 
 

@@ -23,7 +23,7 @@
 
 
 // Qt
-#include <QtGui/QWidget>
+#include <QWidget>
 
 
 class QTimer;

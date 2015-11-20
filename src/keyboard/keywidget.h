@@ -25,7 +25,7 @@
 #include "keyboardkey.h"
 
 // Qt
-#include <QtGui/QWidget>
+#include <QWidget>
 
 
 class QPropertyAnimation;

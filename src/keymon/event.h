@@ -20,7 +20,6 @@
 #ifndef EVENT_H
 #define EVENT_H
 
-
 // KDE
 #include <kdemacros.h>
 

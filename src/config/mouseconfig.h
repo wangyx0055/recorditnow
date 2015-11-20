@@ -27,7 +27,7 @@
 #include "mousebutton.h"
 
 // Qt
-#include <QtGui/QWidget>
+#include <QWidget>
 
 
 class QButtonGroup;

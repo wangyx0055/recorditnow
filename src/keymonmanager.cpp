@@ -113,7 +113,7 @@ bool KeyMonManager::start(const QStringList &devs)
 
     KAuth::ActionReply reply = action.execute("org.kde.recorditnow.helper");
     if (reply.errorCode() != KAuth::ActionReply::NoError) {
-        if (reply.errorCode() == KAuth::ActionReply::UserCancelled) {
+        if (reply.errorCode() == KAuth::ActionReply::UserCancelledError) {
             m_error.clear();
             action.watcher()->disconnect(this);
             return false;
@@ -147,7 +147,7 @@ void KeyMonManager::stop()
     kDebug() << "stopping...";
 
     KAuth::Action action("org.kde.recorditnow.helper.watch");
-    action.setHelperID("org.kde.recorditnow.helper");
+    action.setHelperId("org.kde.recorditnow.helper");
     action.watcher()->disconnect(this);
     action.stop();
 
@@ -163,13 +163,13 @@ QString KeyMonManager::parseError(const int &errorCode)
 
     QString error;
     switch (reply) {
-    case KAuth::ActionReply::NoResponder:
-    case KAuth::ActionReply::NoSuchAction:
-    case KAuth::ActionReply::InvalidAction:
-    case KAuth::ActionReply::HelperBusy:
+    case KAuth::ActionReply::NoResponderError:
+    case KAuth::ActionReply::NoSuchActionError:
+    case KAuth::ActionReply::InvalidActionError:
+    case KAuth::ActionReply::HelperBusyError:
     case KAuth::ActionReply::DBusError: error = i18n("An internal error has occurred.\n"
                                                      "Error code: %1\n", errorCode); break;
-    case KAuth::ActionReply::AuthorizationDenied: error = i18n("You don't have the authorization to"
+    case KAuth::ActionReply::AuthorizationDeniedError: error = i18n("You don't have the authorization to"
                                                                " use this feature."); break;
     default: break;
     }
@@ -210,7 +210,7 @@ void KeyMonManager::actionPerformed(const ActionReply &reply)
     }
 
     KAuth::Action action("org.kde.recorditnow.helper.watch");
-    action.setHelperID("org.kde.recorditnow.helper");
+    action.setHelperId("org.kde.recorditnow.helper");
     action.watcher()->disconnect(this);
 
     kDebug() << "action performed:" << reply.type() << reply.errorCode() << reply.errorDescription();

@@ -28,17 +28,18 @@
 // KDE
 #include <kxmlguiwindow.h>
 #include <kstatusnotifieritem.h>
+#include <KUrl>
+#include <kglobalaccel.h>
 
 // Qt
 #include <QtCore/QPointer>
-
 
 class ZoomDock;
 class KeyboardDock;
 class TimelineDock;
 class CursorWidget;
 class KSqueezedTextLabel;
-class KAction;
+class QAction;
 class RecorderManager;
 class EncoderManager;
 class RecordItNowPluginManager;
@@ -81,7 +82,7 @@ private:
     KeyboardDock *m_keyboardDock;
     ZoomDock *m_zoomDock;
 
-    KAction *getAction(const QString &name);
+    QAction *getAction(const QString &name);
 
     inline void setupActions();
     inline void initRecorder(AbstractRecorder::Data *d);
@@ -142,5 +143,20 @@ protected:
 
 };
 
+/*
+#ifndef X11INFO_H
+#define X11INFO_H
 
+typedef struct _XDisplay Display;
+
+class X11Info
+{
+	static Display *_display;
+public:
+	static Display* display();
+	static unsigned long appRootWindow(int screen = -1);
+};
+
+#endif // X11INFO_H
+*/
 #endif // MAINWINDOW_H

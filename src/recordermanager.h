@@ -31,9 +31,9 @@
 #include <QtCore/QObject>
 #include <QtCore/QPair>
 #include <QtCore/QPointer>
+#include <QIcon>
 
-
-typedef QPair<QString, KIcon> RecorderData;
+typedef QPair<QString, QIcon> RecorderData;
 class RecordItNowPluginManager;
 class RecorderManager : public QObject
 {

@@ -22,7 +22,7 @@
 
 // Qt
 #include <QtCore/QPropertyAnimation>
-#include <QtGui/QWidget>
+#include <QWidget>
 
 
 ProxyLayout::ProxyLayout(QWidget *parent)

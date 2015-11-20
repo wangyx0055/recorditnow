@@ -30,7 +30,7 @@
 #include <kdebug.h>
 
 // Qt
-#include <QtGui/QWidget>
+#include <QWidget>
 #include <QtCore/QDir>
 
 // C

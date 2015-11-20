@@ -26,9 +26,9 @@
 #include <kicon.h>
 
 // Qt
-#include <QtGui/QProgressBar>
+#include <QProgressBar>
 #include <QtCore/QHash>
-#include <QtGui/QStackedLayout>
+#include <QStackedLayout>
 
 
 class Topic;

@@ -26,7 +26,7 @@
 #include "ui_timeline.h"
 
 // Qt
-#include <QtGui/QWidget>
+#include <QWidget>
 
 
 class Topic;

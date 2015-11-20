@@ -26,7 +26,7 @@
 #include "config/configpage.h"
 
 // Qt
-#include <QtGui/QWidget>
+#include <QWidget>
 
 
 class KIntNumInput;

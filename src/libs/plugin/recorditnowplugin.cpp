@@ -27,7 +27,8 @@
 #include <kio/job.h>
 #include <kdebug.h>
 #include <klocalizedstring.h>
-
+#include <KUrl>
+#include <KGlobal>
 // Qt
 #include <QtCore/QDir>
 #include <QtCore/QFile>

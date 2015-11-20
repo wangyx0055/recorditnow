@@ -26,7 +26,7 @@
 #include <kdebug.h>
 
 // Qt
-#include <QtGui/QWidget>
+#include <QWidget>
 
 
 FlowLayout::FlowLayout()

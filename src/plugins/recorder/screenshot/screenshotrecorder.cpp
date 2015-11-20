@@ -28,7 +28,7 @@
 
 // Qt
 #include <QtGui/QPixmap>
-#include <QtGui/QX11Info>
+#include <QtX11Extras/QX11Info>
 #include <QtCore/QFile>
 #include <QtGui/QPainter>
 #include <QtCore/QDir>

@@ -25,7 +25,7 @@
 #include <ui_timelinedocktitlewidget.h>
 
 // Qt
-#include <QtGui/QDockWidget>
+#include <QDockWidget>
 
 
 class Topic;

@@ -8,12 +8,13 @@ include_directories(${CMAKE_SOURCE_DIR}/src/libs/plugin
 
 set(CMAKE_MODULE_PATH ${CMAKE_CURRENT_SOURCE_DIR} ${CMAKE_MODULE_PATH})
 
+include(MacroLogFeature)
 
 if (BUILD_WITH_JOSCHY)
     include_directories(${JOSCHY_SNAPSHOT_INCLUDE_DIR})
 endif (BUILD_WITH_JOSCHY)
 
-macro_optional_find_package(XFixes)
+find_package(XFixes)
 macro_log_feature(XFIXES_FOUND "XFixes"
     "X.Org Xfixes library"
     "http://xorg.freedesktop.org/")
@@ -115,12 +116,15 @@ kde4_add_ui_files(gui_SRCS
 
 kde4_add_kcfg_files(gui_SRCS recorditnow.kcfgc)
 kde4_add_executable(recorditnow ${gui_SRCS})
-target_link_libraries(recorditnow ${KDE4_KDEUI_LIBS}
-                                  ${KDE4_KUTILS_LIBS}
-                                  ${KDE4_KIO_LIBS}
+target_link_libraries(recorditnow KF5::KDELibs4Support
+                                  KF5::KIOCore
                                   recorditnow_recorder
                                   recorditnow_encoder
                                   recorditnow_keymon
+                                  recorditnow_plugin
+                                  ${X11_X11_LIB}
+                                  ${X11_Xext_LIB}
+                                  ${X11_Xfixes_LIB}
                                   ${X11_Xcursor_LIB})
 
 if (BUILD_WITH_JOSCHY)

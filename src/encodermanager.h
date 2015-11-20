@@ -33,7 +33,7 @@
 #include <QtCore/QPair>
 
 
-typedef QPair<QString, KIcon> EncoderData;
+typedef QPair<QString, QIcon> EncoderData;
 class RecordItNowPluginManager;
 class EncoderManager : public QObject
 {

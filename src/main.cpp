@@ -24,6 +24,7 @@
 
 // KDE
 #include <kaboutdata.h>
+#include <k4aboutdata.h>
 #include <kcmdlineargs.h>
 #include <kdebug.h>
 
@@ -32,16 +33,10 @@
 int main(int argc, char *argv[])
 {
 
-    KAboutData about("recorditnow",
-                     0,
-                     ki18n("RecordItNow"),
-                     "0.8",
-                     ki18n("Plugin based desktop recorder"),
-                     KAboutData::License_GPL,
-                     ki18n("(C) 2009 Kai Dombrowe"),
-                     KLocalizedString(),
-                     0,
-                     "just89@gmx.de");
+    K4AboutData about("recorditnow", 0, ki18n("RecordItNow"), "0.8", ki18n("Plugin based desktop recorder"), K4AboutData::License_GPL,
+                          ki18n("(C) 2009 Kai Dombrowe"), KLocalizedString(), 
+                           "just89@gmx.de");
+    
     about.setProgramIconName("recorditnow");
     about.setHomepage("http://recorditnow.sourceforge.net/index.html");
 

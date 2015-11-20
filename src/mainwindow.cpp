@@ -40,13 +40,13 @@
 #include "zoom/zoomdock.h"
 
 // Qt
-#include <QtGui/QX11Info>
+#include <QtX11Extras/QX11Info>
 #include <QtGui/QMouseEvent>
-#include <QtGui/QDesktopWidget>
+#include <QDesktopWidget>
 #include <QtCore/QTimer>
 #include <QtGui/QPainter>
-#include <QtGui/QStackedLayout>
-#include <QtGui/QDockWidget>
+#include <QStackedLayout>
+#include <QDockWidget>
 #include <QtCore/QDir>
 
 // KDE
@@ -68,10 +68,27 @@
 #include <knotification.h>
 #include <ktoolbar.h>
 
+#include <kiconloader.h>
 // X11
 #include <X11/Xlib.h>
+/*
+Display* X11Info::display()
+{
+	if (!_display) {
+		_display = XOpenDisplay(NULL);
+	}
+	return _display;
+}
 
+unsigned long X11Info::appRootWindow(int screen)
+{
+	return screen == -1?
+				XDefaultRootWindow(display()) :
+				XRootWindowOfScreen(XScreenOfDisplay(display(), screen));
+}
 
+Display* X11Info::_display = 0;
+*/
 typedef QPair<QString, QSize> Size;
 MainWindow::MainWindow(QWidget *parent)
     : KXmlGuiWindow(parent),
@@ -207,10 +224,10 @@ void MainWindow::startWithArgs(const QString &backend, const QString &file, cons
 }
 
 
-KAction *MainWindow::getAction(const QString &name)
+QAction *MainWindow::getAction(const QString &name)
 {
 
-    KAction *action = static_cast<KAction*>(actionCollection()->action(name));
+    QAction *action = static_cast<QAction*>(actionCollection()->action(name));
     if (!action) {
         if (name == "box") {
             action = new KActionMenu(this);
@@ -218,9 +235,10 @@ KAction *MainWindow::getAction(const QString &name)
                 static_cast<KActionMenu*>(action)->setDelayed(false);
             }
         } else {
-            action = new KAction(this);
+            action = new QAction(this);
         }
-        action->setShortcutConfigurable(true);
+        //FIX
+        //action->KActionCollection::setShortcutsConfigurable(action, true);
         actionCollection()->addAction(name, action);
     }
     return action;
@@ -231,43 +249,43 @@ KAction *MainWindow::getAction(const QString &name)
 void MainWindow::setupActions()
 {
 
-    KAction *recordAction = getAction("record");
+    QAction *recordAction = getAction("record");
     recordAction->setText(i18n("Record"));
     recordAction->setIcon(KIcon("media-record"));
-    recordAction->setShortcut(Qt::CTRL+Qt::Key_R, KAction::DefaultShortcut);
+    recordAction->setShortcut(Qt::CTRL+Qt::Key_R);
     connect(recordAction, SIGNAL(triggered()), this, SLOT(recordTriggered()));
 
     
-    KAction *pauseAction = getAction("pause");
+    QAction *pauseAction = getAction("pause");
     pauseAction->setObjectName("pause");
     pauseAction->setText(i18n("Pause"));
     pauseAction->setIcon(KIcon("media-playback-pause"));
-    pauseAction->setShortcut(Qt::CTRL+Qt::Key_P, KAction::DefaultShortcut);
+    pauseAction->setShortcut(Qt::CTRL+Qt::Key_P);
     pauseAction->setEnabled(false);
     connect(pauseAction, SIGNAL(triggered()), this, SLOT(pauseRecord()));
 
-    KAction *stopAction = getAction("stop");
+    QAction *stopAction = getAction("stop");
     stopAction->setText(i18n("Stop"));
     stopAction->setIcon(KIcon("media-playback-stop"));
-    stopAction->setShortcut(Qt::CTRL+Qt::Key_S, KAction::DefaultShortcut);
+    stopAction->setShortcut(Qt::CTRL+Qt::Key_S);
     stopAction->setEnabled(false);
     connect(stopAction, SIGNAL(triggered()), this, SLOT(stopRecord()));
 
 
-    KAction *recordWindowAction = getAction("recordWindow");
+    QAction *recordWindowAction = getAction("recordWindow");
     recordWindowAction->setText(i18n("Record a Window"));
     recordWindowAction->setIcon(KIcon("edit-select"));
-    recordWindowAction->setShortcut(Qt::CTRL+Qt::Key_W, KAction::DefaultShortcut);
+    recordWindowAction->setShortcut(Qt::CTRL+Qt::Key_W);
     connect(recordWindowAction, SIGNAL(triggered()), this, SLOT(recordWindow()));
 
     KActionMenu *boxAction = static_cast<KActionMenu*>(getAction("box"));
     boxAction->setText(i18n("Show Frame"));
     boxAction->setIcon(KIcon("draw-rectangle"));
-    boxAction->setShortcut(Qt::CTRL+Qt::Key_F, KAction::DefaultShortcut);
+    boxAction->setShortcut(Qt::CTRL+Qt::Key_F);
     boxAction->setCheckable(true);
     connect(boxAction, SIGNAL(triggered(bool)), this, SLOT(triggerFrame(bool)));
 
-    KAction *frameMoveAction = getAction("frame_move");
+    QAction *frameMoveAction = getAction("frame_move");
     frameMoveAction->setCheckable(true);
     frameMoveAction->setText(i18n("Freely movable"));
     frameMoveAction->setIcon(KIcon("transform-move"));
@@ -286,29 +304,29 @@ void MainWindow::setupActions()
     }
     frameSizesChanged(sizes);
 
-    KAction *fullAction = getAction("recordFullScreen");
+    QAction *fullAction = getAction("recordFullScreen");
     fullAction->setText(i18n("Record the entire Screen"));
     fullAction->setIcon(KIcon("view-fullscreen"));
-    fullAction->setShortcut(Qt::CTRL+Qt::Key_A, KAction::DefaultShortcut);
+    fullAction->setShortcut(Qt::CTRL+Qt::Key_A);
     connect(fullAction, SIGNAL(triggered()), this, SLOT(recordFullScreen()));
 
 
-    KAction *uploadAction = getAction("upload");
+    QAction *uploadAction = getAction("upload");
     uploadAction->setIcon(KIcon("recorditnow-upload-media"));
     uploadAction->setText(i18n("Upload"));
-    uploadAction->setShortcut(Qt::CTRL+Qt::Key_U, KAction::DefaultShortcut);
+    uploadAction->setShortcut(Qt::CTRL+Qt::Key_U);
     connect(uploadAction, SIGNAL(triggered()), this, SLOT(upload()));
 
-    KAction *zoomInAction = getAction("zoom-in");
+    QAction *zoomInAction = getAction("zoom-in");
     zoomInAction->setIcon(KIcon("zoom-in"));
     zoomInAction->setText(i18n("Zoom in"));
-    zoomInAction->setGlobalShortcut(KShortcut(Qt::META+Qt::CTRL+Qt::Key_Plus));
+    KGlobalAccel::setGlobalShortcut(zoomInAction, QKeySequence(Qt::META+Qt::CTRL+Qt::Key_Plus));
     connect(zoomInAction, SIGNAL(triggered()), this, SLOT(zoomIn()));
 
-    KAction *zoomOutAction = getAction("zoom-out");
+    QAction *zoomOutAction = getAction("zoom-out");
     zoomOutAction->setIcon(KIcon("zoom-out"));
     zoomOutAction->setText(i18n("Zoom out"));
-    zoomOutAction->setGlobalShortcut(KShortcut(Qt::META+Qt::CTRL+Qt::Key_Minus));
+    KGlobalAccel::setGlobalShortcut(zoomOutAction, QKeySequence(Qt::META+Qt::CTRL+Qt::Key_Minus));
     connect(zoomOutAction, SIGNAL(triggered()), this, SLOT(zoomOut()));
 
 
@@ -402,13 +420,14 @@ void MainWindow::recordCurrentWindow()
     Window child;
     uint mask;
     int rootX, rootY, winX, winY;
-
+    //FIX
     XGrabServer(QX11Info::display());
-    XQueryPointer(QX11Info::display(), QX11Info::appRootWindow(x11Info().appScreen()), &root, &child,
+    XQueryPointer(QX11Info::display(),
+                  QX11Info::appRootWindow(QX11Info::appScreen()), &root, &child,
                   &rootX, &rootY, &winX, &winY, &mask);
 
     if (child == None) {
-        child = QX11Info::appRootWindow(x11Info().appScreen());
+        child = QX11Info::appRootWindow(QX11Info::appScreen());
     }
 
     XUngrabServer(QX11Info::display());
@@ -444,7 +463,7 @@ void MainWindow::recordFullScreen()
 
     initRecorder(&m_recordData);
 
-    const int screen = x11Info().appScreen();
+    const int screen = QX11Info::appScreen();
     QWidget *desktop = kapp->desktop()->screen(screen);
     if (desktop) {
         m_recordData.winId = desktop->winId();
@@ -1134,7 +1153,7 @@ void MainWindow::timeLineFinsihed()
 void MainWindow::resolutionActionTriggered()
 {
 
-    KAction *action = static_cast<KAction*>(sender());
+    QAction *action = static_cast<QAction*>(sender());
     m_frame->setFrameSize(action->data().toSize());
 
 }
@@ -1152,7 +1171,7 @@ void MainWindow::frameSizesChanged(const QList< QPair<QString, QSize> > &sizes)
     }
 
     foreach (const Size &s, sizes) {
-        KAction *frameResAction = new KAction(this);
+        QAction *frameResAction = new QAction(this);
         frameResAction->setData(s.second);
         frameResAction->setText(s.first);
         frameResAction->setProperty("CleanText", s.first);

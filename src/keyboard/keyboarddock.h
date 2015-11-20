@@ -28,7 +28,7 @@
 #include "../config/keyboardconfig.h"
 
 // Qt
-#include <QtGui/QDockWidget>
+#include <QDockWidget>
 #include <QtCore/QVariantMap>
 
 

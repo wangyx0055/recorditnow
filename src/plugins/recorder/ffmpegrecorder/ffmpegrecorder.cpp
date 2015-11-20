@@ -30,9 +30,9 @@
 #include <kdebug.h>
 
 // Qt
-#include <QtGui/QWidget>
+#include <QWidget>
 #include <QtCore/QDir>
-#include <QtGui/QX11Info>
+#include <QX11Info>
 
 // C
 #include <sys/types.h>
@@ -120,11 +120,10 @@ void FfmpegRecorder::record(const AbstractRecorder::Data &d)
             videoQuality = 2;
         }
 
-        args << "-f" << "x11grab" << "-qscale" << QString::number(videoQuality) << "-r" << QString::number(d.fps);
+        args << "-f" << "x11grab" << "-r" << QString::number(d.fps);
         args << "-s" << QString("%1x%2").arg(geometry.width()).arg(geometry.height());
         args << "-i" << DisplayString(QX11Info::display())+QString("+%1,%2").arg(geometry.x()).arg(geometry.y());
-        args << "-s" << QString("%1x%2").arg(geometry.width()).arg(geometry.height());
-        args << m_tmpFile;
+        args << "-qscale" << QString::number(videoQuality) << m_tmpFile;
         //ffmpeg -f x11grab -qscale 2 -r 20 -s 1440x900 -i :0.0 -s 1440x900 x11grab.avi
     } else {
 

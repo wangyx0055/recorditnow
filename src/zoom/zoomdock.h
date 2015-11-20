@@ -26,7 +26,7 @@
 #include "ui_zoomdocktitlewidget.h"
 
 // Qt
-#include <QtGui/QDockWidget>
+#include <QDockWidget>
 
 
 class QTimer;

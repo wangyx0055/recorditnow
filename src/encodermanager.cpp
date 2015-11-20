@@ -24,6 +24,7 @@
 
 // KDE
 #include <kdebug.h>
+#include <KLocale>
 
 
 EncoderManager::EncoderManager(QObject *parent, RecordItNowPluginManager *manager)

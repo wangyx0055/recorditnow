@@ -25,12 +25,12 @@
 #include <kdebug.h>
 
 // Qt
-#include <QtGui/QX11Info>
+#include <QtX11Extras/QX11Info>
 #include <QtGui/QPainter>
 #include <QtCore/QTimer>
 #include <QtGui/QWheelEvent>
 #include <QtGui/QApplication>
-#include <QtGui/QDesktopWidget>
+#include <QDesktopWidget>
 
 // X
 #ifdef XFIXES_FOUND

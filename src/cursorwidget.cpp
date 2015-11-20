@@ -28,6 +28,11 @@
 #include <kapplication.h>
 #include <kwindowsystem.h>
 #include <kxerrorhandler.h>
+
+#ifdef None
+#undef None
+#endif
+
 #include <klocalizedstring.h>
 
 // Qt
@@ -37,7 +42,7 @@
 #include <QtCore/QEvent>
 #include <QtCore/QDateTime>
 #include <QtCore/QThread>
-#include <QtGui/QDesktopWidget>
+#include <QDesktopWidget>
 #include <QtGui/QPaintEvent>
 
 // X11
@@ -124,10 +129,10 @@ void CursorWidget::setMode(const CursorWidget::WidgetMode &mode)
     if (m_mode == CircleMode) {
         // click-through
         int junk;
-        if (XQueryExtension(x11Info().display(), "SHAPE", &junk, &junk, &junk)) {
-            Pixmap mask = XCreatePixmap(x11Info().display(), winId(), 1, 1, 1);
-            XShapeCombineMask(x11Info().display(), winId(), ShapeInput, 0, 0, mask, ShapeSet);
-            XFreePixmap(x11Info().display(), mask);
+        if (XQueryExtension(QX11Info::display(), "SHAPE", &junk, &junk, &junk)) {
+            Pixmap mask = XCreatePixmap(QX11Info::display(), winId(), 1, 1, 1);
+            XShapeCombineMask(QX11Info::display(), winId(), ShapeInput, 0, 0, mask, ShapeSet);
+            XFreePixmap(QX11Info::display(), mask);
         } else {
             kWarning() << "SHAPE extension is _NOT_ present!";
             m_mode = LEDMode;
@@ -205,10 +210,10 @@ void CursorWidget::updatePos()
 
     switch (m_mode) {
     case LEDMode: {
-            const int size = XcursorGetDefaultSize(x11Info().display());
+            const int size = XcursorGetDefaultSize(QX11Info::display());
             geo.moveTopLeft(QCursor::pos()+QPoint(size, size));
 
-            const QRect desktop = kapp->desktop()->screenGeometry(x11Info().appScreen());
+            const QRect desktop = kapp->desktop()->screenGeometry(QX11Info::appScreen());
             if (!desktop.contains(geo)) {
                 if (geo.x()+geo.width() > desktop.width()) {
                     geo.moveRight(desktop.right());
