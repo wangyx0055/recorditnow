@@ -7,7 +7,7 @@ include_directories(${CMAKE_SOURCE_DIR}
 
 set(QT_USE_QTXML true)
 set(QT_DONT_USE_QTGUI true)
-include(${QT_USE_FILE})
+include_directories(${Qt5Core_INCLUDE_DIRS} ${Qt5Widgets_INCLUDE_DIRS})
 
 
 set(YT_SRCS
@@ -15,8 +15,8 @@ set(YT_SRCS
     responseparser.cpp)
 
 
-QT4_AUTOMOC(${YT_SRCS})
+#QT4_AUTOMOC(${YT_SRCS})
 add_library(joschyyoutube SHARED ${YT_SRCS})
-target_link_libraries(joschyyoutube ${QT_LIBRARIES} ${JOSCHYCORE_LIBRARIES})
+target_link_libraries(joschyyoutube ${Qt5Core_LIBRARIES} ${JOSCHYCORE_LIBRARIES})
 INSTALL(TARGETS joschyyoutube DESTINATION ${JOSCHYCORE_PLUGIN_INSTALL_DIR})
 INSTALL(FILES youtubeprovider.plugin joschycore-youtube.png DESTINATION ${JOSCHYCORE_PLUGIN_INSTALL_DIR})

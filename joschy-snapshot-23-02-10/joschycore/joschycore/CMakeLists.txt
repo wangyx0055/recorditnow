@@ -35,9 +35,9 @@ set(HEADERS
 
 
 
-QT4_AUTOMOC(${SRCS})
+#QT4_AUTOMOC(${SRCS})
 add_library(joschycore SHARED ${SRCS})
-target_link_libraries(joschycore ${QT_LIBRARIES})
+target_link_libraries(joschycore ${Qt5Core_LIBRARIES})
 INSTALL(TARGETS joschycore DESTINATION ${JOSCHY_LIBRARY_INSTALL_DIR})
 install(FILES ${HEADERS} DESTINATION ${JOSCHY_INCLUDE_INSTALL_DIR} COMPONENT Devel)
 

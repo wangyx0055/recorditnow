@@ -117,4 +117,5 @@ Joschy::Plugin *PluginManager::loadPluginInternal(const Joschy::PluginInfo &info
 } // namespace Joschy
 
 
-#include "pluginmanager_p.moc"
+//#include "pluginmanager_p.moc"
+#include "pluginmanager.moc"

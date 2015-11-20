@@ -24,7 +24,7 @@
 #include <joschycore/joschy_global.h>
 
 // Qt
-#include <QtXml/QXmlStreamReader>
+#include <QXmlStreamReader>
 #include <QtCore/QDateTime>
 #include <QtCore/QStringList>
 #include <QTimer>

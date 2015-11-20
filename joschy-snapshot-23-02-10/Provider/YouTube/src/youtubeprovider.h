@@ -87,7 +87,7 @@ protected slots:
 } // namespace Joschy
 
 
-Q_EXPORT_PLUGIN2(joschyyoutube, Joschy::YouTubeProvider);
+//Q_EXPORT_PLUGIN2(joschyyoutube, Joschy::YouTubeProvider);
 
 
 #endif // YOUTUBEPROVIDER_H

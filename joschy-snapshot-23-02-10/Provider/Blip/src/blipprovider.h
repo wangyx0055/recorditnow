@@ -84,7 +84,7 @@ protected slots:
 } // namespace Joschy
 
 
-Q_EXPORT_PLUGIN2(joschyblip, Joschy::BlipProvider);
+//Q_EXPORT_PLUGIN2(joschyblip, Joschy::BlipProvider);
 
 
 #endif // BLIPPROVIDER_H

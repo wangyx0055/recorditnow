@@ -67,7 +67,7 @@ protected:
 } // namespace Joschy
 
 
-Q_EXPORT_PLUGIN2(joschyqnetworklayer, Joschy::QNetworkLayer);
+//Q_EXPORT_PLUGIN2(joschyqnetworklayer, Joschy::QNetworkLayer);
 
 
 #endif // QNETWORKLAYER_H

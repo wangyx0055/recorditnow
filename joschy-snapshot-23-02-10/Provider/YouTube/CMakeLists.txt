@@ -10,7 +10,7 @@ endif (WIN32 AND NOT BUID_WITH_JOSCHYCORE)
 
 # find Qt4
 if (NOT BUILD_WITH_JOSCHYCORE)
-    find_package(Qt4 REQUIRED)
+    find_package(Qt5 REQUIRED COMPONENTS Widgets)
 endif (NOT BUILD_WITH_JOSCHYCORE)
 set(QT_DONT_USE_QTGUI true)
 

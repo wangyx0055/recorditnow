@@ -10,11 +10,11 @@ endif (WIN32 AND NOT BUID_WITH_JOSCHYCORE)
 
 # find Qt4
 if (NOT BUILD_WITH_JOSCHYCORE)
-    find_package(Qt4 REQUIRED)
+    find_package(Qt5 REQUIRED COMPONENTS Widgets)
 endif (NOT BUILD_WITH_JOSCHYCORE)
 
 set(QT_DONT_USE_QTGUI true)
-include(${QT_USE_FILE})
+include_directories(${Qt5Core_INCLUDE_DIRS} ${Qt5Widgets_INCLUDE_DIRS})
 
 # 64 bit?
 if (NOT WIN32)

@@ -8,15 +8,15 @@ include_directories(${CMAKE_SOURCE_DIR}
 
 set(QT_USE_QTNETWORK true)
 set(QT_DONT_USE_QTGUI true)
-include(${QT_USE_FILE})
+include_directories(${Qt5Core_INCLUDE_DIRS} ${Qt5Widgets_INCLUDE_DIRS})
 
 set(Qt_SRCS
     qnetworklayer.cpp
     transferjob.cpp)
 
 
-QT4_AUTOMOC(${Qt_SRCS})
+#QT4_AUTOMOC(${Qt_SRCS})
 add_library(joschyqnetworklayer SHARED ${Qt_SRCS})
-target_link_libraries(joschyqnetworklayer ${JOSCHYCORE_LIBRARIES} ${QT_LIBRARIES})
+target_link_libraries(joschyqnetworklayer ${JOSCHYCORE_LIBRARIES} ${Qt5Network_LIBRARIES})
 INSTALL(TARGETS joschyqnetworklayer DESTINATION ${JOSCHYCORE_PLUGIN_INSTALL_DIR})
 INSTALL(FILES qnetworklayer.plugin DESTINATION ${JOSCHYCORE_PLUGIN_INSTALL_DIR})
