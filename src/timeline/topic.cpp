@@ -27,13 +27,13 @@
 #include <klocale.h>
 
 // Qt
-#include <QtGui/QPainter>
-#include <QtGui/QPaintEvent>
-#include <QtGui/QHBoxLayout>
-#include <QtGui/QLabel>
-#include <QtGui/QToolButton>
-#include <QtGui/QStyle>
-#include <QtGui/QStyleOptionProgressBarV2>
+#include <QPainter>
+#include <QPaintEvent>
+#include <QHBoxLayout>
+#include <QLabel>
+#include <QToolButton>
+#include <QStyle>
+#include <QStyleOptionProgressBarV2>
 
 
 Topic::Topic(QWidget *parent, const QTime duration, const QString &title, const QString &icon)

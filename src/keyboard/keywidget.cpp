@@ -26,10 +26,10 @@
 #include <kiconloader.h>
 
 // Qt
-#include <QtGui/QPainter>
-#include <QtGui/QPaintEvent>
+#include <QPainter>
+#include <QPaintEvent>
 #include <QtCore/QTimer>
-#include <QtGui/QSizePolicy>
+#include <QSizePolicy>
 #include <QtCore/QPropertyAnimation>
 
 

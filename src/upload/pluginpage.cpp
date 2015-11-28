@@ -30,7 +30,7 @@
 #include <kdebug.h>
 
 // Qt
-#include <QtGui/QListWidgetItem>
+#include <QListWidgetItem>
 
 
 Q_DECLARE_METATYPE(Joschy::PluginInfo);

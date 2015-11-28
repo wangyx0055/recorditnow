@@ -25,7 +25,7 @@
 #include "ui_termspage.h"
 
 // Qt
-#include <QtGui/QWizardPage>
+#include <QWizardPage>
 
 
 class TermsPage : public QWizardPage, public Ui::TermsPage

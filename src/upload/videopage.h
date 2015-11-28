@@ -29,7 +29,7 @@
 #include <joschycore/abstractprovider.h>
 
 // Qt
-#include <QtGui/QWizardPage>
+#include <QWizardPage>
 
 
 class VideoPage : public QWizardPage, public Ui::VideoPage

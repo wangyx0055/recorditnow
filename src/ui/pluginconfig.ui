@@ -23,7 +23,7 @@
   <customwidget>
    <class>KPluginSelector</class>
    <extends>QWidget</extends>
-   <header location="global">kpluginselector.h</header>
+   <header location="global">KCMUtils/kpluginselector.h</header>
    <container>1</container>
   </customwidget>
  </customwidgets>

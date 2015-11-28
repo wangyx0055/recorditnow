@@ -27,7 +27,7 @@
 #include <klocalizedstring.h>
 
 // Qt
-#include <QtGui/QTreeWidgetItem>
+#include <QTreeWidgetItem>
 
 
 SoundDeviceDialog::SoundDeviceDialog(QWidget *parent)

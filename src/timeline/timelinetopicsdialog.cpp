@@ -31,7 +31,7 @@
 #include <kdebug.h>
 
 // Qt
-#include <QtGui/QTimeEdit>
+#include <QTimeEdit>
 
 
 TimelineTopicsDialog::TimelineTopicsDialog(QWidget *parent, TopicWidget *topicWidget)

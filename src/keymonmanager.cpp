@@ -98,40 +98,30 @@ bool KeyMonManager::start(const QStringList &devs)
     kDebug() << "start..." << devs;
 
     KAuth::Action action("org.kde.recorditnow.helper.watch");
-    connect(action.watcher(), SIGNAL(progressStep(QVariantMap)), this,
+    ExecuteJob * watchJob=action.execute();
+    connect(watchJob, SIGNAL(progressStep(QVariantMap)), this,
             SLOT(progressStep(QVariantMap)));
-    connect(action.watcher(), SIGNAL(actionPerformed(ActionReply)), this,
+    connect(watchJob, SIGNAL(actionPerformed(ActionReply)), this,
             SLOT(actionPerformed(ActionReply)));
 
     QVariantMap args;
     args["Devs"] = devs;
 
     action.setArguments(args);
-    action.setExecutesAsync(true);
+    //action.setExecutesAsync(true);
 
     kDebug() << "valid action:" << action.isValid();
 
-    KAuth::ActionReply reply = action.execute("org.kde.recorditnow.helper");
-    if (reply.errorCode() != KAuth::ActionReply::NoError) {
-        if (reply.errorCode() == KAuth::ActionReply::UserCancelledError) {
-            m_error.clear();
-            action.watcher()->disconnect(this);
+    //KAuth::ActionReply reply = action.execute("org.kde.recorditnow.helper");
+    action.setHelperId("org.kde.recorditnow.helper");
+    if (!watchJob->exec()) {
+            watchJob->disconnect(this);
+            m_error = watchJob->errorString();
             return false;
-        } else {
-            action.watcher()->disconnect(this);
-            m_error = parseError(reply.errorCode());
-            return false;
-        }
     }
     m_started = true;
 
-    kDebug() << "started: type:" << reply.type() << "Failed?" << reply.failed() << "Error code:" <<
-            reply.errorCode() << "error Description:" << reply.errorDescription();
-
-    kDebug() << "Invalid:" << bool(ActionReply::InvalidActionReply == reply);
-    kDebug() << "Denied:" << bool(ActionReply::AuthorizationDeniedReply == reply);
-    kDebug() << "Canceled:" << bool(ActionReply::UserCancelledReply == reply);
-    kDebug() << "success:" << bool(ActionReply::SuccessReply == reply);
+    kDebug() << "started: "  << "Failed?" << watchJob->error() << "error Description:" << watchJob->errorString();
 
     return true;
 
@@ -148,33 +138,11 @@ void KeyMonManager::stop()
 
     KAuth::Action action("org.kde.recorditnow.helper.watch");
     action.setHelperId("org.kde.recorditnow.helper");
-    action.watcher()->disconnect(this);
-    action.stop();
+    ExecuteJob * watchJob=action.execute();
+    watchJob->disconnect(this);
+    watchJob->kill();
 
     m_started = false;
-
-}
-
-
-QString KeyMonManager::parseError(const int &errorCode)
-{
-
-    KAuth::ActionReply::Error reply = static_cast<KAuth::ActionReply::Error>(errorCode);
-
-    QString error;
-    switch (reply) {
-    case KAuth::ActionReply::NoResponderError:
-    case KAuth::ActionReply::NoSuchActionError:
-    case KAuth::ActionReply::InvalidActionError:
-    case KAuth::ActionReply::HelperBusyError:
-    case KAuth::ActionReply::DBusError: error = i18n("An internal error has occurred.\n"
-                                                     "Error code: %1\n", errorCode); break;
-    case KAuth::ActionReply::AuthorizationDeniedError: error = i18n("You don't have the authorization to"
-                                                               " use this feature."); break;
-    default: break;
-    }
-
-    return error;
 
 }
 
@@ -201,19 +169,15 @@ void KeyMonManager::progressStep(const QVariantMap &data)
 void KeyMonManager::actionPerformed(const ActionReply &reply)
 {
 
-    if (reply.type() != KAuth::ActionReply::Success) {
-        if (reply.type() == KAuth::ActionReply::HelperError) {
-            m_error = reply.data().value("ErrorString").toString();
-        } else {
-            m_error = parseError(reply.errorCode());
-        }
+    if (reply.failed()) {
+        m_error = parseError(reply.errorCode());
     }
 
     KAuth::Action action("org.kde.recorditnow.helper.watch");
     action.setHelperId("org.kde.recorditnow.helper");
-    action.watcher()->disconnect(this);
-
-    kDebug() << "action performed:" << reply.type() << reply.errorCode() << reply.errorDescription();
+    ExecuteJob * watchJob=action.execute();
+    watchJob->disconnect(this);
+    kDebug() << "action performed:" << reply.type() << reply.errorCode() << watchJob->errorString();
 
     m_started = false;
     emit stopped();

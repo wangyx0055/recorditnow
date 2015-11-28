@@ -36,14 +36,14 @@
 #include <klocalizedstring.h>
 
 // Qt
-#include <QtGui/QCursor>
+#include <QCursor>
 #include <QtCore/QTimer>
-#include <QtGui/QPainter>
+#include <QPainter>
 #include <QtCore/QEvent>
 #include <QtCore/QDateTime>
 #include <QtCore/QThread>
 #include <QDesktopWidget>
-#include <QtGui/QPaintEvent>
+#include <QPaintEvent>
 
 // X11
 #include <X11/Xlib.h>

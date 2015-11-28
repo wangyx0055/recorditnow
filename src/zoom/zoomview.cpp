@@ -26,10 +26,10 @@
 
 // Qt
 #include <QtX11Extras/QX11Info>
-#include <QtGui/QPainter>
+#include <QPainter>
 #include <QtCore/QTimer>
-#include <QtGui/QWheelEvent>
-#include <QtGui/QApplication>
+#include <QWheelEvent>
+#include <QApplication>
 #include <QDesktopWidget>
 
 // X
@@ -124,7 +124,7 @@ void ZoomView::updateView()
     target.moveCenter(QCursor::pos());
 
 
-    const int screen = x11Info().appScreen();
+    const int screen = QX11Info::appScreen();
     const QRect screenGeometry = QApplication::desktop()->screenGeometry(screen);
 
     // adjust target
@@ -153,7 +153,7 @@ void ZoomView::updateView()
     }
 
     // grab
-    m_pixmap = QPixmap::grabWindow(x11Info().appRootWindow(screen),
+    m_pixmap = QPixmap::grabWindow(QX11Info::appRootWindow(screen),
                                    target.x(),
                                    target.y(),
                                    target.width(),

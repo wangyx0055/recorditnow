@@ -30,7 +30,7 @@
 
 // Qt
 #include <QtCore/QTimer>
-#include <QtGui/QKeyEvent>
+#include <QKeyEvent>
 
 
 KeyboardKeyPage::KeyboardKeyPage(const QString &device, QWidget *parent)

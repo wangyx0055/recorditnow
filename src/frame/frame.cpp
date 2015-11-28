@@ -28,9 +28,9 @@
 #include <kwindowsystem.h>
 
 // Qt
-#include <QtGui/QResizeEvent>
+#include <QResizeEvent>
 #include <QtCore/QTimer>
-#include <QtGui/QPainter>
+#include <QPainter>
 
 
 #define FRAME_MIN_SIZE 100

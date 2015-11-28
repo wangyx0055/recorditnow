@@ -30,7 +30,7 @@
 #include <joschycore/abstractprovider.h>
 
 // Qt
-#include <QtGui/QWizardPage>
+#include <QWizardPage>
 #include <QtCore/QPointer>
 
 

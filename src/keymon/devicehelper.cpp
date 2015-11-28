@@ -101,7 +101,7 @@ void DeviceHelper::timeout()
 }
 
 
-KDE4_AUTH_HELPER_MAIN("org.kde.recorditnow.helper", DeviceHelper)
+KAUTH_HELPER_MAIN("org.kde.recorditnow.helper", DeviceHelper)
 
 
 #include "devicehelper.moc"

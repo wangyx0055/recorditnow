@@ -27,7 +27,7 @@
 #include <kconfiggroup.h>
 
 // Qt
-#include <QtGui/QTreeWidgetItem>
+#include <QTreeWidgetItem>
 
 
 typedef QPair<QString, QSize> Size;
@@ -37,10 +37,10 @@ FrameConfig::FrameConfig(KConfig *cfg, QWidget *parent)
 
     setupUi(this);
 
-    addButton->setIcon(KIcon("list-add"));
-    removeButton->setIcon(KIcon("list-remove"));
-    upButton->setIcon(KIcon("go-up"));
-    downButton->setIcon(KIcon("go-down"));
+    addButton->setIcon(QIcon("list-add"));
+    removeButton->setIcon(QIcon("list-remove"));
+    upButton->setIcon(QIcon("go-up"));
+    downButton->setIcon(QIcon("go-down"));
 
     connect(addButton, SIGNAL(clicked()), this, SLOT(add()));
     connect(removeButton, SIGNAL(clicked()), this, SLOT(remove()));

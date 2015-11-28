@@ -27,10 +27,10 @@
 #include <kdebug.h>
 
 // Qt
-#include <QtGui/QPixmap>
+#include <QPixmap>
 #include <QtX11Extras/QX11Info>
 #include <QtCore/QFile>
-#include <QtGui/QPainter>
+#include <QPainter>
 #include <QtCore/QDir>
 
 // X

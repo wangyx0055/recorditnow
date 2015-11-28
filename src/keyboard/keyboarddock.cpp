@@ -32,8 +32,8 @@
 // Qt
 #include <QtCore/QFile>
 #include <QtCore/QTimer>
-#include <QtGui/QMainWindow>
-#include <QtGui/QSlider>
+#include <QMainWindow>
+#include <QSlider>
 
 
 KeyboardDock::KeyboardDock(QWidget *parent)

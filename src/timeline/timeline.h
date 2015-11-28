@@ -28,6 +28,9 @@
 // Qt
 #include <QWidget>
 
+//kdelibs4support
+#include <KGlobal>
+#include <kiconloader.h>
 
 class Topic;
 class KConfigGroup;

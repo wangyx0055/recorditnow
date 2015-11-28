@@ -31,11 +31,11 @@
 K_PLUGIN_FACTORY(ConfigFactory, registerPlugin<RecordMyDesktopConfig>();)
 K_EXPORT_PLUGIN(ConfigFactory("recorditnow_recordmydesktop_config"))
 RecordMyDesktopConfig::RecordMyDesktopConfig(QWidget *parent, const QVariantList &args)
-    : KCModule(ConfigFactory::componentData(), parent, args)
+    : KCModule(parent, args)
 {
 
     setupUi(this);
-    deviceButton->setIcon(KIcon("audio-card"));
+    deviceButton->setIcon(QIcon("audio-card"));
     connect(deviceButton, SIGNAL(clicked()), this, SLOT(showDeviceDialog()));
 
     addConfig(Settings::self(), this);

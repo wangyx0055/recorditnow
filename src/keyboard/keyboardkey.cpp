@@ -25,7 +25,7 @@
 #include <klocalizedstring.h>
 
 // Qt
-#include <QtGui/QKeyEvent>
+#include <QKeyEvent>
 
 
 KeyboardKey::KeyboardKey(const int &code, const QString &icon, const QString &text)

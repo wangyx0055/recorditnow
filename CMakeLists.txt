@@ -15,7 +15,7 @@ include(KDECompilerSettings)
 include(FeatureSummary)
 
 find_package(Qt5 REQUIRED COMPONENTS Widgets)
-find_package(KF5 REQUIRED COMPONENTS KDELibs4Support GlobalAccel I18n)
+find_package(KF5 REQUIRED COMPONENTS KDELibs4Support GlobalAccel KCMUtils I18n)
 include_directories("/usr/include/KF5/KGlobalAccel/")
 
 #add_definitions(-DQT_DISABLE_DEPRECATED_BEFORE=0x040900)

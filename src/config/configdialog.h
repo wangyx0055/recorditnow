@@ -28,6 +28,8 @@
 // KDE
 #include <kconfigdialog.h>
 
+// kdelibs4support
+#include <kdialog.h>
 
 namespace RecordItNow {
     class ConfigPage;

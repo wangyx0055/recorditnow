@@ -22,8 +22,10 @@
 
 
 // Qt
-#include <QtGui/QTreeWidgetItem>
+#include <QTreeWidgetItem>
 
+// kdelibs4support
+#include <KIconButton>
 
 class QTimeEdit;
 class Topic;

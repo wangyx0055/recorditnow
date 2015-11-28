@@ -28,7 +28,7 @@
 // Qt
 #include <QWidget>
 #include <QtCore/QThread>
-#include <QtGui/QColor>
+#include <QColor>
 #include <QtCore/QHash>
 #include <QtCore/QVariantMap>
 #include <QtX11Extras/QX11Info>

@@ -28,7 +28,7 @@
 #include <kmessagebox.h>
 
 // Qt
-#include <QtGui/QTreeWidgetItem>
+#include <QTreeWidgetItem>
 
 
 DeviceSearchDialog::DeviceSearchDialog(const KeyMon::DeviceInfo::DeviceType &type, QWidget *parent)
@@ -51,7 +51,7 @@ DeviceSearchDialog::DeviceSearchDialog(const KeyMon::DeviceInfo::DeviceType &typ
                 }
                 QTreeWidgetItem *item = new QTreeWidgetItem;
                 if (!info.icon.isEmpty()) {
-                    item->setIcon(0, KIcon(info.icon));
+                    item->setIcon(0, QIcon(info.icon));
                 }
                 item->setText(0, info.name);
                 item->setText(1, info.file);

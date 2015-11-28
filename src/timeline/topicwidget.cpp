@@ -27,9 +27,9 @@
 #include <klocalizedstring.h>
 
 // Qt
-#include <QtGui/QPainter>
-#include <QtGui/QPaintEvent>
-#include <QtGui/QLabel>
+#include <QPainter>
+#include <QPaintEvent>
+#include <QLabel>
 
 
 TopicWidget::TopicWidget(QWidget *parent)

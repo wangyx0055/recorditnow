@@ -30,7 +30,7 @@
 K_PLUGIN_FACTORY(ConfigFactory, registerPlugin<ScreenshotRecorderConfig>();)
 K_EXPORT_PLUGIN(ConfigFactory("recorditnow_screenshot_config"))
 ScreenshotRecorderConfig::ScreenshotRecorderConfig(QWidget *parent, const QVariantList &args)
-    : KCModule( ConfigFactory::componentData(), parent, args)
+    : KCModule(parent, args)
 {
 
     setupUi(this);

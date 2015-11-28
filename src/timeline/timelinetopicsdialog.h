@@ -28,6 +28,8 @@
 // KDE
 #include <kdialog.h>
 
+// kdelibs4support
+#include <KIconButton>
 
 class TopicWidget;
 class TimelineTopicsDialog : public KDialog, public Ui::TimelineTopics

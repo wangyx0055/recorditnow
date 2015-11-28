@@ -28,10 +28,10 @@
 #include <kiconeffect.h>
 
 // Qt
-#include <QtGui/QPainter>
-#include <QtGui/QPaintEvent>
-#include <QtGui/QStyle>
-#include <QtGui/QStyleOption>
+#include <QPainter>
+#include <QPaintEvent>
+#include <QStyle>
+#include <QStyleOption>
 
 
 CheckIcon::CheckIcon(QWidget *parent)

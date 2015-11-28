@@ -25,6 +25,8 @@
 #include <kdebug.h>
 #include <kstandarddirs.h>
 
+#include <KGlobal>
+
 // Qt
 #include <QtCore/QStringList>
 #include <QtCore/QFile>

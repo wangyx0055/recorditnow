@@ -32,7 +32,7 @@
 #include <kmessagebox.h>
 
 // Qt
-#include <QtGui/QCloseEvent>
+#include <QCloseEvent>
 
 
 UploadWizard::UploadWizard(QWidget *parent)

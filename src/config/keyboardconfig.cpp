@@ -29,7 +29,7 @@
 #include <kconfiggroup.h>
 
 // Qt
-#include <QtGui/QListWidget>
+#include <QListWidget>
 
 
 KeyboardConfig::KeyboardConfig(KConfig *cfg, QWidget *parent)

@@ -23,7 +23,7 @@
 
 
 // Qt
-#include <QtGui/QLabel>
+#include <QLabel>
 
 
 class Frame;

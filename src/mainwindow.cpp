@@ -41,10 +41,10 @@
 
 // Qt
 #include <QtX11Extras/QX11Info>
-#include <QtGui/QMouseEvent>
+#include <QMouseEvent>
 #include <QDesktopWidget>
 #include <QtCore/QTimer>
-#include <QtGui/QPainter>
+#include <QPainter>
 #include <QStackedLayout>
 #include <QDockWidget>
 #include <QtCore/QDir>

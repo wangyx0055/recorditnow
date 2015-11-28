@@ -31,14 +31,14 @@
 K_PLUGIN_FACTORY(ConfigFactory, registerPlugin<MencoderEncoderConfig>();)
 K_EXPORT_PLUGIN(ConfigFactory("recorditnow_mencoder_config"))
 MencoderEncoderConfig::MencoderEncoderConfig(QWidget *parent, const QVariantList &args)
-    : KCModule( ConfigFactory::componentData(), parent, args)
+    : KCModule(parent, args)
 {
 
     setupUi(this);
 
-    addButton->setIcon(KIcon("list-add"));
-    editButton->setIcon(KIcon("document-edit"));
-    removeButton->setIcon(KIcon("list-remove"));
+    addButton->setIcon(QIcon("list-add"));
+    editButton->setIcon(QIcon("document-edit"));
+    removeButton->setIcon(QIcon("list-remove"));
 
     connect(formatCombo, SIGNAL(currentIndexChanged(QString)), this, SLOT(formatChanged(QString)));
     connect(addButton, SIGNAL(clicked()), this, SLOT(addClicked()));

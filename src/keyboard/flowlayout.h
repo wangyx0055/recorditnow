@@ -22,7 +22,7 @@
 
 
 // Qt
-#include <QtGui/QLayout>
+#include <QLayout>
 
 
 class ProxyLayout;

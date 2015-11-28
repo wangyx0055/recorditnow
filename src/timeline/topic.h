@@ -25,7 +25,7 @@
 #include <kicon.h>
 
 // Qt
-#include <QtGui/QProgressBar>
+#include <QProgressBar>
 #include <QtCore/QTime>
 
 

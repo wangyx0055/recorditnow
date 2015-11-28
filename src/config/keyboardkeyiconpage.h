@@ -26,7 +26,7 @@
 #include "ui_keyboardkeyiconpage.h"
 
 // Qt
-#include <QtGui/QWizardPage>
+#include <QWizardPage>
 
 
 class QListWidgetItem ;

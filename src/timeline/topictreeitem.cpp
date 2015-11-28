@@ -27,7 +27,7 @@
 #include <kicondialog.h>
 
 // Qt
-#include <QtGui/QTimeEdit>
+#include <QTimeEdit>
 
 
 TopicTreeItem::TopicTreeItem(QTreeWidget *parent)

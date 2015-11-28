@@ -29,7 +29,7 @@
 
 // Qt
 #include <QtCore/QDir>
-#include <QtGui/QListWidgetItem>
+#include <QListWidgetItem>
 
 
 KeyboardKeyIconPage::KeyboardKeyIconPage(QWidget *parent)

@@ -30,9 +30,9 @@
 #include <kwindowsystem.h>
 
 // Qt
-#include <QtGui/QTreeWidget>
-#include <QtGui/QToolButton>
-#include <QtGui/QButtonGroup>
+#include <QTreeWidget>
+#include <QToolButton>
+#include <QButtonGroup>
 
 
 MouseConfig::MouseConfig(KConfig *cfg, QWidget *parent)

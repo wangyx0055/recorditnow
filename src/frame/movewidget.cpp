@@ -27,9 +27,9 @@
 #include <kiconloader.h>
 
 // Qt
-#include <QtGui/QMouseEvent>
-#include <QtGui/QHBoxLayout>
-#include <QtGui/QLabel>
+#include <QMouseEvent>
+#include <QHBoxLayout>
+#include <QLabel>
 
 
 MoveWidget::MoveWidget(QWidget *parent)

@@ -22,7 +22,7 @@
 
 
 // Qt
-#include <QtGui/QWizard>
+#include <QWizard>
 
 
 class KeyboardWizard : public QWizard

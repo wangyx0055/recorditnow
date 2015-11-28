@@ -27,7 +27,7 @@
 #include <joschycore/plugininfo.h>
 
 // Qt
-#include <QtGui/QWizardPage>
+#include <QWizardPage>
 
 
 class PluginPage : public QWizardPage, public Ui::PluginPage

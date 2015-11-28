@@ -46,7 +46,7 @@ ConfigDialog::ConfigDialog(QWidget *parent, KActionCollection *collection,
 
     Q_ASSERT(m_pluginManager);
     setAttribute(Qt::WA_DeleteOnClose);
-    setInitialSize(QSize(600, 550));
+    //this->setInitialSize(QSize(600, 550));
     init();
 
 }
@@ -119,7 +119,7 @@ void ConfigDialog::updateEncoderCombo()
     ui_settings.encoderCombo->clear();
     foreach (const KPluginInfo &info, m_pluginManager->getEncoderList()) {
         if (info.isPluginEnabled()) {
-            ui_settings.encoderCombo->addItem(KIcon(info.icon()), info.name());
+            ui_settings.encoderCombo->addItem(QIcon(info.icon()), info.name());
         }
     }
     ui_settings.encoderCombo->setCurrentItem(oldEncoder, false);
@@ -145,7 +145,7 @@ void ConfigDialog::configFinished(const int &code)
 void ConfigDialog::encoderChanged()
 {
 
-    enableButtonApply(true);
+    buttonBox()->button(QDialogButtonBox::Apply)->setEnabled(true);
 
 }
 
@@ -153,7 +153,7 @@ void ConfigDialog::encoderChanged()
 void ConfigDialog::pageConfigChanged()
 {
 
-    enableButtonApply(true);
+    buttonBox()->button(QDialogButtonBox::Apply)->setEnabled(true);
     updateEncoderCombo();
 
 }
@@ -167,7 +167,7 @@ void ConfigDialog::updateWidgetsDefault()
     foreach (RecordItNow::ConfigPage *page, m_pageList) {
         page->setDefaults();
     }
-    enableButtonApply(true);
+    buttonBox()->button(QDialogButtonBox::Apply)->setEnabled(true);
 
 }
 
@@ -176,7 +176,7 @@ void ConfigDialog::updateSettings()
 {
 
     KConfigDialog::updateSettings();
-    enableButtonApply(false);
+    buttonBox()->button(QDialogButtonBox::Apply)->setEnabled(false);
 
 }
 

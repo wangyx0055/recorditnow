@@ -25,7 +25,7 @@
 
 // Qt
 #include <QtCore/QVariantList>
-#include <QtGui/QPixmap>
+#include <QPixmap>
 
 
 class ScreenshotRecorder : public AbstractRecorder

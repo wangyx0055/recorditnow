@@ -26,8 +26,8 @@
 #include <klocalizedstring.h>
 
 // Qt
-#include <QtGui/QMouseEvent>
-#include <QtGui/QFontMetrics>
+#include <QMouseEvent>
+#include <QFontMetrics>
 
 // X11
 #include <X11/Xlib.h>

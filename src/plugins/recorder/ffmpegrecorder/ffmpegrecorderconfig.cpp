@@ -31,7 +31,7 @@
 K_PLUGIN_FACTORY(ConfigFactory, registerPlugin<FfmpegRecorderConfig>();)
 K_EXPORT_PLUGIN(ConfigFactory("recorditnow_recordmydesktop_config"))
 FfmpegRecorderConfig::FfmpegRecorderConfig(QWidget *parent, const QVariantList &args)
-    : KCModule(ConfigFactory::componentData(), parent, args)
+    : KCModule(parent, args)
 {
 
     setupUi(this);

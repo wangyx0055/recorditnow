@@ -30,7 +30,7 @@
 #include <kauth.h>
 
 // Qt
-#include <QtGui/QWizardPage>
+#include <QWizardPage>
 #include <QtCore/QVariantMap>
 
 

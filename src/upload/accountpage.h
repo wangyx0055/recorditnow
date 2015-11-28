@@ -25,7 +25,7 @@
 #include "ui_accountpage.h"
 
 // Qt
-#include <QtGui/QWizardPage>
+#include <QWizardPage>
 
 
 namespace KWallet {
